@@ -1,0 +1,15 @@
+cmake_minimum_required( VERSION 2.8 )
+project( Facedetect )
+IF(NOT CMAKE_BUILD_TYPE)
+  SET(CMAKE_BUILD_TYPE Release)
+ENDIF()
+find_package(OpenCV REQUIRED)
+message(STATUS "OpenCV library status:")
+message(STATUS "    version: ${OpenCV_VERSION}")
+message(STATUS "    libraries: ${OpenCV_LIBS}")
+message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
+include_directories(
+${OpenCV_INCLUDE_DIRS}
+)
+add_executable(facedetect facedetect.cpp)
+target_link_libraries(facedetect ${OpenCV_LIBS})
